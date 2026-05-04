@@ -1,32 +1,81 @@
-<HTML>
-<HEAD>
-<META HTTP-EQUIV="Content-Type" CONTENT="text/html">
-  <meta charset="UTF-8">
-</HEAD>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<style>
+  /* 5つのテーブルを横に並べるための設定 */
+  .container {
+    display: flex;
+    justify-content: flex-start; /* 左詰めに並べる */
+    gap: 10px; /* テーブル同士の間隔 */
+    padding-left: 100px; /* 元のTD(width=100)の余白を再現 */
+  }
 
-<TABLE cellSpacing=0 cellPadding=0 border=0>
-  <TR>
-    <TD width=100 height=30></TD>
-    <TD width=250 height=30><FONT size=4><A href="./fr_list_kind.html"  target=left_upper>ＪＲ　車両種類別</A></FONT></TD>
-    <TD width=250 height=30><FONT size=4><A href="./fr_list_use.html"   target=left_upper>ＪＲ　車両用途別</A></FONT></TD>
-    <TD width=250 height=30><FONT size=4><A href="./fr_list_type.html"  target=left_upper>ＪＲ　形式別</A></FONT></TD>
-    <TD width=250 height=30><FONT size=4><A href="./source/etc/Proto_Type.html" target=right>ＪＲ　試作車(900番台)</A></FONT></TD>
-    <TD width=250 height=30><FONT size=4><A href="./source/etc/Top_Number.html" target=right>ＪＲ　トップナンバー</A></FONT></TD>
-  </TR>
-  <TR>
-    <TD width=100 height=30></TD>
-    <TD width=250 height=30><FONT size=4><A href="./fr_list_train.html" target=left_upper>ＪＲ　列車別</A></FONT></TD>
-    <TD width=250 height=30><FONT size=4><A href="./fr_list_line.html" 	target=left_upper>ＪＲ　路線別</A></FONT></TD>
-    <TD width=250 height=30><FONT size=4><A href="./fr_list_area.html"  target=left_upper>ＪＲ　地域別</A></FONT></TD>
-    <TD width=250 height=30><FONT size=4><A href="./source/train/Mitooka.html" target=right>水戸岡鋭治デザイン車両</A></FONT></TD>
-    <TD width=250 height=30><FONT size=4><A href="./source/train/Takara_kuji.html" target=right>宝くじ号</A></FONT></TD>
-  </TR>
-  <TR>
-    <TD width=100 height=30></TD>
-    <TD width=250 height=30><FONT size=4>他社へ譲渡された車両</FONT></TD>
-    <TD width=250 height=30><FONT size=4><A href="./fr_list_noriire.html" target=left_upper>私鉄→ＪＲ乗入れ</A></FONT></TD>
-    <TD width=250 height=30></TD>
-    <TD width=250 height=30><FONT size=4><A href="./fr_list_shitetsu.html" target=left_upper>私鉄　会社別</A></FONT></TD>
-    <TD width=250 height=30><FONT size=4><A href="./fr_list_international.html" target=left_upper>海外</A></FONT></TD>
-  </TR>
-</TABLE>
+  table {
+    border-collapse: collapse;
+    width: 250px; /* 各テーブルの横幅 */
+  }
+
+  td {
+    height: 30px;
+    vertical-align: middle;
+  }
+
+  a {
+    font-size: small; /* <FONT size=4>相当 */
+    text-decoration: none;
+    color: blue;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- 1列目：車両種類・列車別 -->
+  <table>
+    <tr><td><a href="./fr_list_kind.html" target="left_upper" onclick="parent.postMessage('show-list', '*')">ＪＲ 車両種類別</a></td></tr>
+    <tr><td><a href="./fr_list_train.html" target="left_upper" onclick="parent.postMessage('show-list', '*')">ＪＲ 列車別</a></td></tr>
+    <tr><td>他社へ譲渡された車両</td></tr>
+  </table>
+
+  <!-- 2列目：車両用途・路線別 -->
+  <table>
+    <tr><td><a href="./fr_list_use.html" target="left_upper" onclick="parent.postMessage('show-list', '*')">ＪＲ 車両用途別</a></td></tr>
+    <tr><td><a href="./fr_list_line.html" target="left_upper" onclick="parent.postMessage('show-list', '*')">ＪＲ 路線別</a></td></tr>
+    <tr><td><a href="./fr_list_noriire.html" target="left_upper" onclick="parent.postMessage('show-list', '*')">私鉄→ＪＲ乗入れ</a></td></tr>
+  </table>
+
+  <!-- 3列目：形式別・地域別 -->
+  <table>
+    <tr><td><a href="./fr_list_type.html" target="left_upper" onclick="parent.postMessage('show-list', '*')">ＪＲ 形式別</a></td></tr>
+    <tr><td><a href="./fr_list_area.html" target="left_upper" onclick="parent.postMessage('show-list', '*')">ＪＲ 地域別</a></td></tr>
+  </table>
+
+  <!-- 4列目：試作車・デザイン・私鉄 -->
+  <table>
+    <tr><td><a href="./source/etc/Proto_Type.html" target="right">ＪＲ 試作車(900番台)</a></td></tr>
+    <tr><td><a href="./source/train/Mitooka.html" target="right">水戸岡鋭治デザイン車両</a></td></tr>
+    <tr><td><a href="./fr_list_shitetsu.html" target="left_upper" onclick="parent.postMessage('show-list', '*')">私鉄 会社別</a></td></tr>
+  </table>
+
+  <!-- 5列目：トップナンバー・宝くじ・海外 -->
+  <table>
+    <tr><td><a href="./source/etc/Top_Number.html" target="right">ＪＲ トップナンバー</a></td></tr>
+    <tr><td><a href="./source/train/Takara_kuji.html" target="right">宝くじ号</a></td></tr>
+    <tr><td><a href="./fr_list_international.html" target="left_upper" onclick="parent.postMessage('show-list', '*')">海外</a></td></tr>
+  </table>
+</div>
+
+<script>
+  // ページ内のすべてのリンク (aタグ) を取得します
+  document.querySelectorAll('a').forEach(link => {
+    // リンクがクリックされたときの動作を登録します
+    link.addEventListener('click', () => {
+      // 親画面 (index.html) に 'show-list' という合図を送ります
+      parent.postMessage('show-list', '*');
+    });
+  });
+</script>
+
+</body>
+</html>
