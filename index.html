@@ -1,13 +1,89 @@
-<html>
-<BASE target="_top">
-<frameset rows="100,*">
-	<frame src="./fr_top_01.html" name="top">
-	<frameset cols="300,*">
-		<frameset rows="600,*">
-			<frame src="" scrolling="1" name="left_upper">
-			<frame src="./white.html" scrolling="1" name="left_lower">
-		</frameset>
-		<frame src="" scrolling="1" frameborder="1" name="right">
-	</frameset>
-</frameset>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>鉄道車両リスト - メイン</title>
+    <style>
+        /* 全体のボックスモデルを調整 */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column; /* 縦方向に並べる（上部と下部） */
+            height: 100vh; /* 画面いっぱいに表示 */
+            overflow: hidden; /* 全体のスクロールを禁止 */
+        }
+
+        /* 上部エリア（旧 top フレーム） */
+        header {
+            height: 100px; /* source: 3 の rows="100,*" に相当 */
+            width: 100%;
+            border-bottom: 1px solid #ccc;
+        }
+
+        /* 下部コンテナ（サイドバー + メイン） */
+        .main-wrapper {
+            display: flex; /* 横方向に並べる */
+            flex: 1; /* 残りの高さをすべて使う */
+            overflow: hidden;
+        }
+
+        /* 左側サイドバー（旧 left_upper / left_lower） */
+        nav {
+            width: 300px; /* source: 3 の cols="300,*" に相当 */
+            display: flex;
+            flex-direction: column; /* 内部を縦に分割 */
+            border-right: 1px solid #ccc;
+        }
+
+        .left-upper {
+            height: 600px; /* source: 3 の rows="600,*" に相当 */
+            border-bottom: 1px solid #eee;
+        }
+
+        .left-lower {
+            flex: 1; /* 残りのスペースを使う */
+        }
+
+        /* 右側メインエリア（旧 right フレーム） */
+        main {
+            flex: 1; /* 残りの幅をすべて使う */
+            background-color: #fff;
+        }
+
+        /* 全ての iframe を領域いっぱいに広げる */
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <iframe src="./fr_top_01.html" name="top"></iframe>
+    </header>
+
+    <div class="main-wrapper">
+        <nav>
+            <div class="left-upper">
+                <iframe src="./fr_list_kind.html" name="left_upper"></iframe>
+            </div>
+            <div class="left-lower">
+                <iframe src="./white.html" name="left_lower"></iframe>
+            </div>
+        </nav>
+
+        <main>
+            <iframe src="./white.html" name="right"></iframe>
+        </main>
+    </div>
+
+</body>
 </html>
