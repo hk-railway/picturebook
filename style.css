@@ -22,7 +22,7 @@ iframe {
 
 /* 分割状態：上が100px、下が残り。下は左右に分割 */
 .state-split #top-area {
-    height: 100px;
+    height: 110px;
     border-bottom: 1px solid #ccc;
 }
 .state-split #main-container {
